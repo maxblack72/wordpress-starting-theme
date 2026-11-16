@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "acf/wysiwyg",
+  "title": "WYSIWYG",
+  "description": "Rich text with minimal formatting.",
+  "category": "text",
+  "icon": "editor-paragraph",
+  "keywords": ["wysiwyg", "text", "paragraph", "content"],
+  "supports": {
+    "align": false,
+    "anchor": false,
+    "customClassName": false,
+    "multiple": true
+  },
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  }
+}
