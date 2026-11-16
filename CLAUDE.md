@@ -39,3 +39,15 @@ wp language plugin update --all
 ```
 
 It can also be changed from WP admin: Settings → General → Site Language. Replace `it_IT` with the desired locale. To go back to the default, switch to `en_US`.
+
+## Blocks and field groups
+
+- Content is built only with custom Secure Custom Fields blocks, one folder per block in `web/app/themes/base/blocks/<name>/`:
+  - `block.json` defines the block (name `acf/<name>`),
+  - `fields.php` defines its field group in PHP with `acf_add_local_field_group()`,
+  - `render.php` renders the Twig template `views/blocks/<name>.twig`.
+- Blocks are registered automatically by `functions.php`, and the allowed block list is built from the `block.json` files. Core blocks, patterns, the block directory and Openverse are disabled.
+- Current blocks: `wysiwyg` (a single WYSIWYG field with a minimal toolbar and no media upload).
+- **SCF Local JSON is NOT enabled.** Field groups are defined in PHP only, so they do not appear in the Field Groups admin screen and cannot be edited from the admin UI. Do not create field groups from the admin UI.
+- To change a block's fields (e.g. add a caption to a carousel), edit the block's `fields.php` and its Twig template, then commit. Keep field keys unique and stable.
+- Header and footer are fixed in code (`views/partials/`) and are never editable by the client.
